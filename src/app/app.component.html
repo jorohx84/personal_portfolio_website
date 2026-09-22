@@ -1,0 +1,98 @@
+<header class="nav-wrap">
+  <nav class="nav shell">
+    <button class="brand" (click)="scrollTo('home')" aria-label="Go to home">
+      <span class="brand-mark">JR</span><span>Johannes Roth</span>
+    </button>
+    <button class="menu-toggle" (click)="menuOpen = !menuOpen" aria-label="Toggle menu">☰</button>
+    <div class="nav-links" [class.open]="menuOpen">
+      <button [class.active]="activeSection === 'home'" (click)="scrollTo('home')">Home</button>
+      <button [class.active]="activeSection === 'about'" (click)="scrollTo('about')">About</button>
+      <button [class.active]="activeSection === 'skills'" (click)="scrollTo('skills')">Skills</button>
+      <button [class.active]="activeSection === 'work'" (click)="scrollTo('work')">Work</button>
+      <button [class.active]="activeSection === 'experience'" (click)="scrollTo('experience')">Experience</button>
+      <button class="nav-contact" (click)="scrollTo('contact')">Let's talk <span>↗</span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section id="home" class="hero shell">
+    <div class="hero-copy">
+      <p class="eyebrow"><span></span> FULLSTACK SOFTWARE DEVELOPER</p>
+      <h1>I build software<br><em>people enjoy using.</em></h1>
+      <p class="hero-text">I design and develop modern business applications from frontend to backend — with Angular, React, Python and Django.</p>
+      <div class="hero-actions">
+        <button class="button primary" (click)="scrollTo('work')">View my work <span>↗</span></button>
+        <button class="button text" (click)="scrollTo('contact')">Get in touch <span>→</span></button>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="orb"></div>
+      <div class="code-card card-a"><span>const</span> developer = <strong>"Johannes"</strong>;</div>
+      <div class="code-card card-b"><span>stack</span> = [Angular, Django, PostgreSQL]</div>
+      <div class="hero-number">01</div>
+    </div>
+  </section>
+
+  <section id="about" class="section shell">
+    <div class="section-label">01 / ABOUT</div>
+    <div class="about-grid">
+      <h2>From idea to<br><em>working product.</em></h2>
+      <div class="about-copy">
+        <p class="lead">I'm a Fullstack Software Developer focused on building useful, maintainable web applications and SaaS products.</p>
+        <p>I enjoy working across the complete stack: shaping interfaces, designing APIs, modeling data and turning complex business processes into simple user experiences.</p>
+        <p>My current focus is business software — especially CRM, project management, planning and workflow automation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section section-muted">
+    <div class="shell">
+      <div class="section-label">02 / TOOLKIT</div>
+      <div class="skills-head"><h2>Tools I use to<br><em>build things.</em></h2><p>Technology is a means to an end. I choose the tools that let me build clean, fast and scalable products.</p></div>
+      <div class="skill-grid">
+        <article><span class="skill-no">01</span><h3>Frontend</h3><ul><li>Angular</li><li>React</li><li>TypeScript</li><li>JavaScript</li><li>HTML / SCSS</li></ul></article>
+        <article><span class="skill-no">02</span><h3>Backend</h3><ul><li>Python</li><li>Django</li><li>Django REST Framework</li><li>REST APIs</li><li>WebSockets</li></ul></article>
+        <article><span class="skill-no">03</span><h3>Data & Infrastructure</h3><ul><li>PostgreSQL</li><li>Redis</li><li>Docker</li><li>Linux</li><li>Git / GitHub</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="section shell">
+    <div class="section-label">03 / SELECTED WORK</div>
+    <div class="work-head"><h2>Things I've<br><em>built.</em></h2><p>Real products, not just demos. A selection of software I have designed and developed.</p></div>
+    <div class="projects">
+      @for (project of projects; track project.title) {
+        <article class="project">
+          <div class="project-visual"><span>{{ project.accent }}</span><div class="project-lines"></div><div class="project-window"><i></i><i></i><i></i><b>{{ project.title }}</b></div></div>
+          <div class="project-info"><div><small>{{ project.type }}</small><h3>{{ project.title }}</h3><p>{{ project.description }}</p></div><div class="stack">@for (item of project.stack; track item) { <span>{{ item }}</span> }</div></div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section id="experience" class="section section-dark">
+    <div class="shell">
+      <div class="section-label light">04 / EXPERIENCE</div>
+      <div class="experience-grid">
+        <h2>Building software<br><em>with purpose.</em></h2>
+        <div class="timeline">
+          <article><span>01</span><div><small>NOW</small><h3>Fullstack Software Developer</h3><p>Building and evolving Tanema — a SaaS platform for modern business teams.</p></div></article>
+          <article><span>02</span><div><small>PREVIOUS</small><h3>Software & Product Development</h3><p>Frontend architecture, backend APIs, databases, deployment and product design.</p></div></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact shell">
+    <div class="section-label">05 / CONTACT</div>
+    <div class="contact-inner">
+      <p class="eyebrow"><span></span> HAVE A PROJECT?</p>
+      <h2>Let's build something<br><em>useful together.</em></h2>
+      <p>Whether you need a fullstack developer, a product built from scratch or help turning an idea into working software.</p>
+      <a class="button primary" href="mailto:hello@tanema.de">Get in touch <span>↗</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer shell"><span>© {{ 2026 }} Johannes Roth</span><span>Angular · React · Python · Django</span><button (click)="scrollTo('home')">Back to top ↑</button></footer>
