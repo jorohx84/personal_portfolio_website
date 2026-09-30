@@ -188,23 +188,24 @@
         </div>
       </div>
       <form class="contact-form" (submit)="sendMessage($event)">
+        <p class="form-message error" role="alert" hidden></p>
         <div class="form-row">
           <label>
             <span>Name</span>
-            <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
+            <input type="text" name="name" placeholder="Your name" autocomplete="name">
           </label>
           <label>
             <span>Email</span>
-            <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required>
+            <input type="email" name="email" placeholder="your@email.com" autocomplete="email">
           </label>
         </div>
         <label>
           <span>Subject</span>
-          <input type="text" name="subject" placeholder="What can I help you with?" required>
+          <input type="text" name="subject" placeholder="What can I help you with?">
         </label>
         <label>
           <span>Message</span>
-          <textarea name="message" rows="6" placeholder="Tell me a little about your project..." required></textarea>
+          <textarea name="message" rows="6" placeholder="Tell me a little about your project..."></textarea>
         </label>
         <button class="primary-btn form-submit" type="submit">Send message <span>↗</span></button>
       </form>
