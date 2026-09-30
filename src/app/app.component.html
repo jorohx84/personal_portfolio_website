@@ -188,24 +188,24 @@
         </div>
       </div>
       <form class="contact-form" (submit)="sendMessage($event)">
-        <p class="form-message error" role="alert" hidden></p>
+        <p class="form-message error" role="alert" hidden>Please fill in the highlighted fields.</p>
         <div class="form-row">
           <label>
             <span>Name</span>
-            <input type="text" name="name" placeholder="Your name" autocomplete="name">
+            <input type="text" name="name" placeholder="Your name" autocomplete="name" class="form-field">
           </label>
           <label>
             <span>Email</span>
-            <input type="email" name="email" placeholder="your@email.com" autocomplete="email">
+            <input type="email" name="email" placeholder="your@email.com" autocomplete="email" class="form-field">
           </label>
         </div>
         <label>
           <span>Subject</span>
-          <input type="text" name="subject" placeholder="What can I help you with?">
+          <input type="text" name="subject" placeholder="What can I help you with?" class="form-field">
         </label>
         <label>
           <span>Message</span>
-          <textarea name="message" rows="6" placeholder="Tell me a little about your project..."></textarea>
+          <textarea name="message" rows="6" placeholder="Tell me a little about your project..." class="form-field"></textarea>
         </label>
         <button class="primary-btn form-submit" type="submit">Send message <span>↗</span></button>
       </form>
