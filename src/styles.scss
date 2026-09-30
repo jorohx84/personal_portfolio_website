@@ -7,7 +7,7 @@
     --line: #303030;
     --soft: #202020;
     --dark: #111111;
-    --sidebar-width: 220px;
+    --sidebar-width: clamp(190px, 14vw, 220px);
     --sidebar-bg: #151515;
     --content-left-gap: clamp(70px, 6.5vw, 180px)
 }
@@ -93,11 +93,11 @@ a {
     font-size: 28px
 }
 
-.side-nav {
+ .side-nav {
     position: absolute;
     top: 42%;
-    left: 36px;
-    right: 36px;
+    left: clamp(24px, 2.3vw, 36px);
+    right: clamp(24px, 2.3vw, 36px);
     transform: translateY(-50%);
     display: grid;
     gap: 4px
@@ -128,10 +128,10 @@ a {
     color: var(--accent)
 }
 
-.sidebar-bottom {
+ .sidebar-bottom {
     position: absolute;
-    left: 36px;
-    right: 36px;
+    left: clamp(24px, 2.3vw, 36px);
+    right: clamp(24px, 2.3vw, 36px);
     bottom: 34px;
     display: grid;
     gap: 14px
@@ -750,7 +750,7 @@ a {
 
 @media(max-width:1050px) {
     :root {
-        --sidebar-width: 220px
+        --sidebar-width: 200px
     }
 
     .section-shell {
