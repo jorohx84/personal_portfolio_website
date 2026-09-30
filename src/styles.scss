@@ -497,7 +497,12 @@ a {
 .bar i {
     display: block;
     height: 100%;
-    background: var(--accent)
+    background: var(--accent);
+    transition: width 1.15s cubic-bezier(.22, 1, .36, 1);
+}
+
+.skills-grid:not(.skills-animated) .bar i {
+    width: 0 !important;
 }
 
 .resume-grid {
