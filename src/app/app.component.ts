@@ -66,8 +66,25 @@ export class AppComponent {
     const data = new FormData(form);
     const name = String(data.get('name') ?? '');
     const email = String(data.get('email') ?? '');
-    const subject = String(data.get('subject') ?? '');
-    const message = String(data.get('message') ?? '');
+    const subject = String(data.get('subject') ?? '').trim();
+    const message = String(data.get('message') ?? '').trim();
+
+    const errors: string[] = [];
+    if (!name.trim()) errors.push('Please enter your name.');
+    if (!email.trim()) errors.push('Please enter your email address.');
+    if (email.trim() && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email.trim())) {
+      errors.push('Please enter a valid email address.');
+    }
+    if (!subject) errors.push('Please enter a subject.');
+    if (!message) errors.push('Please enter a message.');
+
+    const errorBox = form.querySelector('.form-message.error') as HTMLElement | null;
+    if (errorBox) {
+      errorBox.textContent = errors.join(' ');
+      errorBox.hidden = errors.length === 0;
+    }
+
+    if (errors.length > 0) return;
 
     const body = [
       'Name: ' + name,
