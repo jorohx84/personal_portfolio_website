@@ -185,10 +185,47 @@ a {
 
 .hero {
     min-height: 760px;
-    display: grid;
-    grid-template-columns: 1fr .9fr;
-    gap: 70px;
-    align-items: center
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    width: 100%;
+    padding: 0 max(50px, calc((100% - 1080px) / 2));
+    margin: 0
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    overflow: hidden;
+    background: #111
+}
+
+.hero-background img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: 72% center;
+    filter: saturate(.78) contrast(1.04)
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+        linear-gradient(90deg, rgba(17,17,17,.98) 0%, rgba(17,17,17,.91) 32%, rgba(17,17,17,.52) 62%, rgba(17,17,17,.18) 100%),
+        linear-gradient(180deg, rgba(17,17,17,.18) 0%, rgba(17,17,17,.12) 55%, rgba(17,17,17,.52) 100%)
+}
+
+.hero-copy {
+    position: relative;
+    z-index: 2;
+    width: min(590px, 58%);
+    padding: 90px 0
 }
 
 .kicker,
@@ -240,34 +277,10 @@ a {
     box-shadow: 0 10px 25px rgba(255, 180, 0, .25)
 }
 
-.hero-art {
-    position: relative;
-    height: 540px;
-    display: flex;
-    align-items: center;
-    justify-content: center
-}
-
-.portrait {
-    width: 100%;
-    height: 500px;
-    background: #111;
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden
-}
-
-.portrait img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: 65% center
-}
-
 .hero-badge {
     position: absolute;
-    right: 0;
+    z-index: 3;
+    right: max(50px, calc((100% - 1080px) / 2));
     bottom: 72px;
     background: #222;
     padding: 18px 22px;
@@ -282,6 +295,7 @@ a {
 }
 
 .hero-dots {
+    z-index: 3;
     position: absolute;
     width: 110px;
     height: 110px;
@@ -738,12 +752,15 @@ a {
     }
 
     .hero {
-        gap: 35px
+        padding: 0 30px
     }
 
-    .portrait {
-        width: 340px;
-        height: 430px
+    .hero-copy {
+        width: min(620px, 72%)
+    }
+
+    .hero-badge {
+        right: 30px
     }
 
     .service-card {
@@ -809,9 +826,14 @@ a {
     }
 
     .hero {
-        min-height: auto;
-        padding: 110px 0 80px;
-        grid-template-columns: 1fr
+        min-height: 720px;
+        padding: 100px 19px 80px
+    }
+
+    .hero-copy {
+        width: 100%;
+        padding: 0;
+        max-width: 560px
     }
 
     .hero h1 {
@@ -822,14 +844,19 @@ a {
         height: 420px
     }
 
-    .portrait {
-        height: 380px;
-        width: 290px
+    .hero-background img {
+        object-position: 68% center
+    }
+
+    .hero-overlay {
+        background:
+            linear-gradient(90deg, rgba(17,17,17,.97) 0%, rgba(17,17,17,.82) 52%, rgba(17,17,17,.38) 100%),
+            linear-gradient(180deg, rgba(17,17,17,.2) 0%, rgba(17,17,17,.2) 55%, rgba(17,17,17,.62) 100%)
     }
 
     .hero-badge {
-        right: 5px;
-        bottom: 40px
+        right: 19px;
+        bottom: 34px
     }
 
     .content-section {
