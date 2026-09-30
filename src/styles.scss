@@ -9,7 +9,7 @@
     --dark: #111111;
     --sidebar-width: 220px;
     --sidebar-bg: #151515;
-    --content-left-gap: clamp(70px, 5vw, 130px)
+    --content-left-gap: clamp(70px, 6.5vw, 180px)
 }
 
 * {
@@ -192,11 +192,11 @@ a {
     align-items: center;
     overflow: hidden;
     isolation: isolate;
-    width: min(1220px, calc(100% - var(--content-left-gap) - 50px));
+    width: calc(100% - var(--content-left-gap));
     max-width: none;
     padding: 0;
     margin-left: var(--content-left-gap);
-    margin-right: 50px
+    margin-right: 0
 }
 
 .hero-background {
