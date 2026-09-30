@@ -47,16 +47,7 @@ export class AppComponent implements AfterViewInit {
   ];
 
   ngAfterViewInit(): void {
-    if (!this.skillsSection) return;
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        this.skillsAnimated = true;
-        observer.disconnect();
-      }
-    }, { threshold: 0.2 });
-
-    observer.observe(this.skillsSection.nativeElement);
+    this.checkSkillsVisibility();
   }
 
   @HostListener('window:scroll')
@@ -66,6 +57,24 @@ export class AppComponent implements AfterViewInit {
     for (const id of sections) {
       const el = document.getElementById(id);
       if (el && y >= el.offsetTop) this.activeSection = id;
+    }
+
+    this.checkSkillsVisibility();
+  }
+
+  @HostListener('window:resize')
+  onResize(): void {
+    this.checkSkillsVisibility();
+  }
+
+  private checkSkillsVisibility(): void {
+    if (this.skillsAnimated || !this.skillsSection) return;
+
+    const rect = this.skillsSection.nativeElement.getBoundingClientRect();
+    const fullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+
+    if (fullyVisible) {
+      this.skillsAnimated = true;
     }
   }
 
