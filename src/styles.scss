@@ -30,3 +30,7 @@
 
 .contact-form input.invalid,.contact-form textarea.invalid{border-color:#d96b6b;box-shadow:0 0 0 1px rgba(217,107,107,.12)}
 .contact-form input.invalid:focus,.contact-form textarea.invalid:focus{border-color:#d96b6b;box-shadow:0 0 0 1px rgba(217,107,107,.18)}
+
+.form-submit-wrap{min-height:48px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px}
+.form-submit-wrap .form-message{min-height:18px;margin:0}
+.form-submit-wrap .form-message[hidden]{display:block;visibility:hidden}
