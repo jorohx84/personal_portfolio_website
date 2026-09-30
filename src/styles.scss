@@ -48,7 +48,7 @@ a {
 }
 
 .section-shell {
-    width: min(1220px, calc(100% - 2 * var(--content-left-gap)));
+    width: min(1440px, calc(100% - 2 * var(--content-left-gap)));
     margin-left: auto;
     margin-right: auto
 }
@@ -192,11 +192,11 @@ a {
     align-items: center;
     overflow: hidden;
     isolation: isolate;
-    width: 100%;
+    width: min(1440px, calc(100% - 2 * var(--content-left-gap)));
     max-width: none;
     padding: 0;
-    margin-left: 0;
-    margin-right: 0
+    margin-left: auto;
+    margin-right: auto
 }
 
 .hero-background {
