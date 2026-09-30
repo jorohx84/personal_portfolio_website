@@ -58,4 +58,25 @@ export class AppComponent {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     this.menuOpen = false;
   }
+
+  sendMessage(event: Event): void {
+    event.preventDefault();
+
+    const form = event.target as HTMLFormElement;
+    const data = new FormData(form);
+    const name = String(data.get('name') ?? '');
+    const email = String(data.get('email') ?? '');
+    const subject = String(data.get('subject') ?? '');
+    const message = String(data.get('message') ?? '');
+
+    const body = [
+      'Name: ' + name,
+      'Email: ' + email,
+      '',
+      message
+    ].join('\n');
+
+    window.location.href = 'mailto:hello@tanema.de?subject=' +
+      encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
 }
