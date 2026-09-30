@@ -228,9 +228,9 @@ a {
 .hero-copy {
     position: relative;
     z-index: 2;
-    width: min(1440px, calc(100% - 2 * var(--content-left-gap)));
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
     padding: 90px 0
 }
 
