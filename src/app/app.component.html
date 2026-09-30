@@ -181,13 +181,33 @@
       <div>
         <h3>Just say <span>Hello</span></h3>
         <p>Have a project, an idea or simply want to talk about software? I'd be happy to hear from you.</p>
-        <a class="primary-btn" href="mailto:hello@tanema.de">Send message <span>↗</span></a>
+        <div class="contact-info">
+          <div><small>Email</small><a href="mailto:hello@tanema.de">hello&#64;tanema.de</a></div>
+          <div><small>Website</small><a href="https://tanema.de" target="_blank" rel="noopener">tanema.de</a></div>
+          <div><small>Based in</small><strong>Rheinland-Pfalz, Germany</strong></div>
+        </div>
       </div>
-      <div class="contact-info">
-        <div><small>Email</small><a href="mailto:hello@tanema.de">hello&#64;tanema.de</a></div>
-        <div><small>Website</small><a href="https://tanema.de" target="_blank" rel="noopener">tanema.de</a></div>
-        <div><small>Based in</small><strong>Rheinland-Pfalz, Germany</strong></div>
-      </div>
+      <form class="contact-form" (submit)="sendMessage($event)">
+        <div class="form-row">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required>
+          </label>
+        </div>
+        <label>
+          <span>Subject</span>
+          <input type="text" name="subject" placeholder="What can I help you with?" required>
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="6" placeholder="Tell me a little about your project..." required></textarea>
+        </label>
+        <button class="primary-btn form-submit" type="submit">Send message <span>↗</span></button>
+      </form>
     </div>
   </section>
 
