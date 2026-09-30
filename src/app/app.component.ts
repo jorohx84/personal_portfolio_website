@@ -68,18 +68,13 @@ export class AppComponent implements AfterViewInit {
   }
 
   private checkSkillsVisibility(): void {
-    if (this.skillsAnimated || !this.skillsSection) return;
+    if (!this.skillsSection) return;
 
     const rect = this.skillsSection.nativeElement.getBoundingClientRect();
+    const triggerLine = window.innerHeight * 0.18;
+    const shouldAnimate = rect.top <= triggerLine && rect.bottom > 0;
 
-    // The whole section can be taller than the viewport, so waiting for
-    // rect.bottom <= innerHeight would never fire. Start once the Skills
-    // section has actually reached the viewport.
-    const sectionHasReachedViewport = rect.top <= window.innerHeight * 0.18 && rect.bottom > 0;
-
-    if (sectionHasReachedViewport) {
-      this.skillsAnimated = true;
-    }
+    this.skillsAnimated = shouldAnimate;
   }
 
   scrollTo(id: string): void {
