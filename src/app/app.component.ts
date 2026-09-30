@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 
 interface Project { title: string; description: string; type: string; number: string; short: string; }
 interface Service { title: string; description: string; number: string; icon: string; }
@@ -10,7 +10,9 @@ interface Skill { name: string; level: number; }
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
+  @ViewChild('skillsSection') skillsSection?: ElementRef<HTMLElement>;
+  skillsAnimated = false;
   menuOpen = false;
   activeSection = 'home';
 
@@ -43,6 +45,19 @@ export class AppComponent {
     { number: '02', short: 'RELATIONS', title: 'Tanema Relations', type: 'CRM', description: 'A focused CRM for customers, contacts, activities, tasks and sales workflows.' },
     { number: '03', short: 'PROJECTS', title: 'Tanema Projects', type: 'Project Management', description: 'Project execution with planning, forecasting, team capacity and real-time collaboration.' }
   ];
+
+  ngAfterViewInit(): void {
+    if (!this.skillsSection) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        this.skillsAnimated = true;
+        observer.disconnect();
+      }
+    }, { threshold: 0.2 });
+
+    observer.observe(this.skillsSection.nativeElement);
+  }
 
   @HostListener('window:scroll')
   onScroll(): void {
