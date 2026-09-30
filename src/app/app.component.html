@@ -188,7 +188,6 @@
         </div>
       </div>
       <form class="contact-form" (submit)="sendMessage($event)">
-        <p class="form-message error" role="alert" hidden>Please fill in the highlighted fields.</p>
         <div class="form-row">
           <label>
             <span>Name</span>
@@ -207,7 +206,10 @@
           <span>Message</span>
           <textarea name="message" rows="6" placeholder="Tell me a little about your project..." class="form-field"></textarea>
         </label>
-        <button class="primary-btn form-submit" type="submit">Send message <span>↗</span></button>
+        <div class="form-submit-wrap">
+          <p class="form-message error" role="alert" hidden>Please fill in the highlighted fields.</p>
+          <button class="primary-btn form-submit" type="submit">Send message <span>↗</span></button>
+        </div>
       </form>
     </div>
   </section>
