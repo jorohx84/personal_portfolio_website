@@ -208,7 +208,7 @@ a {
     height: 100%;
     display: block;
     object-fit: cover;
-    object-position: 72% center;
+    object-position: 72% 38%;
     filter: saturate(.78) contrast(1.04)
 }
 
@@ -845,7 +845,7 @@ a {
     }
 
     .hero-background img {
-        object-position: 68% center
+        object-position: 68% 38%
     }
 
     .hero-overlay {
