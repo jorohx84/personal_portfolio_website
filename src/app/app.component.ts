@@ -69,22 +69,33 @@ export class AppComponent {
     const subject = String(data.get('subject') ?? '').trim();
     const message = String(data.get('message') ?? '').trim();
 
-    const errors: string[] = [];
-    if (!name.trim()) errors.push('Please enter your name.');
-    if (!email.trim()) errors.push('Please enter your email address.');
-    if (email.trim() && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email.trim())) {
-      errors.push('Please enter a valid email address.');
-    }
-    if (!subject) errors.push('Please enter a subject.');
-    if (!message) errors.push('Please enter a message.');
+    const fields = {
+      name: form.querySelector('[name="name"]') as HTMLInputElement,
+      email: form.querySelector('[name="email"]') as HTMLInputElement,
+      subject: form.querySelector('[name="subject"]') as HTMLInputElement,
+      message: form.querySelector('[name="message"]') as HTMLTextAreaElement
+    };
+
+    Object.values(fields).forEach(field => field.classList.remove('invalid'));
+
+    const invalidFields: HTMLElement[] = [];
+
+    if (!name.trim()) invalidFields.push(fields.name);
+    if (!email.trim() || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email.trim())) invalidFields.push(fields.email);
+    if (!subject) invalidFields.push(fields.subject);
+    if (!message) invalidFields.push(fields.message);
+
+    invalidFields.forEach(field => field.classList.add('invalid'));
 
     const errorBox = form.querySelector('.form-message.error') as HTMLElement | null;
     if (errorBox) {
-      errorBox.textContent = errors.join(' ');
-      errorBox.hidden = errors.length === 0;
+      errorBox.hidden = invalidFields.length === 0;
     }
 
-    if (errors.length > 0) return;
+    if (invalidFields.length > 0) {
+      invalidFields[0].focus();
+      return;
+    }
 
     const body = [
       'Name: ' + name,
