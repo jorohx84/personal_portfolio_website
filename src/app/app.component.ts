@@ -1,12 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 
-interface Project {
-  title: string;
-  description: string;
-  stack: string[];
-  type: string;
-  accent: string;
-}
+interface Project { title: string; description: string; type: string; number: string; short: string; }
+interface Service { title: string; description: string; number: string; icon: string; }
+interface Skill { name: string; level: number; }
 
 @Component({
   selector: 'app-root',
@@ -18,34 +14,40 @@ export class AppComponent {
   menuOpen = false;
   activeSection = 'home';
 
+  services: Service[] = [
+    { number: '01', icon: '</>', title: 'Web Application Development', description: 'Modern, responsive business applications built with Angular, TypeScript and a clean component architecture.' },
+    { number: '02', icon: '{}', title: 'Backend & API Development', description: 'Reliable APIs and business logic with Python, Django and Django REST Framework.' },
+    { number: '03', icon: '◎', title: 'SaaS Product Development', description: 'From product idea to production-ready SaaS — including data models, authentication, billing and deployment.' },
+    { number: '04', icon: '↗', title: 'Product Engineering', description: 'Turning complex business processes into simple workflows and interfaces people actually enjoy using.' },
+    { number: '05', icon: 'DB', title: 'Data & Infrastructure', description: 'PostgreSQL, Redis, Docker and Linux infrastructure for maintainable and scalable applications.' },
+    { number: '06', icon: '↯', title: 'Real-time Applications', description: 'Interactive experiences with WebSockets, Django Channels and event-driven application flows.' }
+  ];
+
+  skills: Skill[] = [
+    { name: 'Angular / TypeScript', level: 95 },
+    { name: 'Python / Django', level: 92 },
+    { name: 'HTML / SCSS / CSS', level: 94 },
+    { name: 'PostgreSQL / Data', level: 88 },
+    { name: 'Docker / Linux / Git', level: 82 },
+    { name: 'REST APIs / WebSockets', level: 90 }
+  ];
+
+  experience = [
+    { date: 'NOW', title: 'Fullstack Software Developer', company: 'Tanema', description: 'Building and evolving Tanema, a SaaS platform for CRM, projects, planning and business workflows.' },
+    { date: 'CURRENT', title: 'Sales & Business Development', company: 'Chemical Industry', description: 'Working in B2B sales while continuing to develop software products and deepen my understanding of real business processes.' },
+    { date: 'ONGOING', title: 'Independent Software Development', company: 'Tanema Business Software', description: 'Designing, developing and operating fullstack web applications from frontend through backend and infrastructure.' }
+  ];
+
   projects: Project[] = [
-    {
-      title: 'Tanema Workspace',
-      description: 'A modular business platform for CRM, projects, activities, capacity planning and reporting.',
-      stack: ['Angular', 'Django', 'DRF', 'PostgreSQL'],
-      type: 'SaaS / Business Software',
-      accent: '01'
-    },
-    {
-      title: 'Tanema Relations',
-      description: 'A focused CRM experience for customers, contacts, activities, tasks and sales workflows.',
-      stack: ['Angular', 'TypeScript', 'Django'],
-      type: 'CRM',
-      accent: '02'
-    },
-    {
-      title: 'Tanema Projects',
-      description: 'Project execution with planning, forecasting, team capacity and real-time collaboration.',
-      stack: ['Angular', 'Django Channels', 'Redis'],
-      type: 'Project Management',
-      accent: '03'
-    }
+    { number: '01', short: 'WORKSPACE', title: 'Tanema Workspace', type: 'SaaS / Business Software', description: 'A modular business platform combining CRM, projects, activities, capacity planning and reporting.' },
+    { number: '02', short: 'RELATIONS', title: 'Tanema Relations', type: 'CRM', description: 'A focused CRM for customers, contacts, activities, tasks and sales workflows.' },
+    { number: '03', short: 'PROJECTS', title: 'Tanema Projects', type: 'Project Management', description: 'Project execution with planning, forecasting, team capacity and real-time collaboration.' }
   ];
 
   @HostListener('window:scroll')
   onScroll(): void {
-    const sections = ['home', 'about', 'skills', 'work', 'experience', 'contact'];
-    const y = window.scrollY + 160;
+    const sections = ['home', 'about', 'services', 'skills', 'resume', 'portfolio', 'contact'];
+    const y = window.scrollY + window.innerHeight * 0.35;
     for (const id of sections) {
       const el = document.getElementById(id);
       if (el && y >= el.offsetTop) this.activeSection = id;
@@ -53,7 +55,7 @@ export class AppComponent {
   }
 
   scrollTo(id: string): void {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     this.menuOpen = false;
   }
 }
