@@ -71,9 +71,13 @@ export class AppComponent implements AfterViewInit {
     if (this.skillsAnimated || !this.skillsSection) return;
 
     const rect = this.skillsSection.nativeElement.getBoundingClientRect();
-    const fullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
 
-    if (fullyVisible) {
+    // The whole section can be taller than the viewport, so waiting for
+    // rect.bottom <= innerHeight would never fire. Start once the Skills
+    // section has actually reached the viewport.
+    const sectionHasReachedViewport = rect.top <= window.innerHeight * 0.18 && rect.bottom > 0;
+
+    if (sectionHasReachedViewport) {
       this.skillsAnimated = true;
     }
   }
