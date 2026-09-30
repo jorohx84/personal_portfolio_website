@@ -47,8 +47,9 @@ a {
 }
 
 .section-shell {
-    width: min(1080px, calc(100% - 100px));
-    margin: 0 auto
+    width: min(1220px, calc(100% - 80px));
+    margin-left: 70px;
+    margin-right: 50px
 }
 
 .sidebar {
@@ -748,7 +749,9 @@ a {
     }
 
     .section-shell {
-        width: min(100% - 60px, 1080px)
+        width: calc(100% - 80px);
+        margin-left: 40px;
+        margin-right: 40px
     }
 
     .hero {
@@ -822,7 +825,9 @@ a {
     }
 
     .section-shell {
-        width: calc(100% - 38px)
+        width: calc(100% - 38px);
+        margin-left: 19px;
+        margin-right: 19px
     }
 
     .hero {
