@@ -192,10 +192,10 @@ a {
     align-items: center;
     overflow: hidden;
     isolation: isolate;
-    width: calc(100% - var(--content-left-gap));
+    width: 100%;
     max-width: none;
     padding: 0;
-    margin-left: var(--content-left-gap);
+    margin-left: 0;
     margin-right: 0
 }
 
@@ -760,13 +760,15 @@ a {
     }
 
     .hero {
-        width: calc(100% - 80px);
-        margin-left: 40px;
-        margin-right: 40px
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0
     }
 
     .hero-copy {
-        width: min(620px, 72%)
+        width: calc(100% - 80px);
+        margin-left: 40px;
+        margin-right: 40px
     }
 
     .hero-badge {
