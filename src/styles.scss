@@ -24,3 +24,6 @@
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .form-submit{border:0;justify-self:start;cursor:pointer}
 @media(max-width:800px){.form-row{grid-template-columns:1fr}.contact-form{padding:22px}}
+
+.form-message{margin:0;font-size:12px;line-height:1.6}
+.form-message.error{color:#ff8f8f;padding:10px 12px;border:1px solid rgba(255,120,120,.25);background:rgba(255,120,120,.06)}
