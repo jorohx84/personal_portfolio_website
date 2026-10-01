@@ -36,3 +36,6 @@ yarn-error.log*
 # Temporary files
 *.tmp
 *.temp
+
+# Private mail configuration
+/config.php
