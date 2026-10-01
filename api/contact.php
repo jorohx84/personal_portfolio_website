@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 require_once __DIR__ . '/../vendor/autoload.php';
-$config = require __DIR__ . '/../config.php';
+$config = require __DIR__ . '/config.php';
 
 $input = json_decode(file_get_contents('php://input'), true);
 if (!is_array($input)) {
