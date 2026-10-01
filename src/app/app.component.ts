@@ -104,7 +104,7 @@ export class AppComponent implements AfterViewInit {
     const invalidFields: HTMLElement[] = [];
 
     if (!name) invalidFields.push(fields.name);
-    if (!email || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) invalidFields.push(fields.email);
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) invalidFields.push(fields.email);
     if (!subject) invalidFields.push(fields.subject);
     if (!message) invalidFields.push(fields.message);
 
