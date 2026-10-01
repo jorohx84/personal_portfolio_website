@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, ViewChild, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 interface Project { title: string; description: string; type: string; number: string; short: string; }
 interface Service { title: string; description: string; number: string; icon: string; }
@@ -11,6 +12,8 @@ interface Skill { name: string; level: number; }
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements AfterViewInit {
+  private readonly http = inject(HttpClient);
+
   @ViewChild('skillsSection') skillsSection?: ElementRef<HTMLElement>;
   skillsAnimated = false;
   menuOpen = false;
@@ -82,10 +85,10 @@ export class AppComponent implements AfterViewInit {
     this.menuOpen = false;
   }
 
-  async sendMessage(event: Event): Promise<void> {
+  sendMessage(event: Event): void {
     event.preventDefault();
 
-    const form = event.target as HTMLFormElement;
+    const form = event.currentTarget as HTMLFormElement;
     const data = new FormData(form);
     const name = String(data.get('name') ?? '').trim();
     const email = String(data.get('email') ?? '').trim();
@@ -114,7 +117,10 @@ export class AppComponent implements AfterViewInit {
     const successBox = form.querySelector('.form-message.success') as HTMLElement | null;
     const submitButton = form.querySelector('.form-submit') as HTMLButtonElement | null;
 
-    if (errorBox) errorBox.hidden = invalidFields.length === 0;
+    if (errorBox) {
+      errorBox.textContent = 'Please fill in the highlighted fields.';
+      errorBox.hidden = invalidFields.length === 0;
+    }
     if (successBox) successBox.hidden = true;
 
     if (invalidFields.length > 0) {
@@ -124,32 +130,35 @@ export class AppComponent implements AfterViewInit {
 
     if (submitButton) submitButton.disabled = true;
 
-    try {
-      const response = await fetch('/api/contact.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, subject, message })
-      });
+    this.http.post<{ success: boolean; message?: string }>('/api/contact.php', {
+      name,
+      email,
+      subject,
+      message
+    }).subscribe({
+      next: (response) => {
+        if (response.success) {
+          form.reset();
+          Object.values(fields).forEach(field => field.classList.remove('invalid'));
+          if (errorBox) errorBox.hidden = true;
+          if (successBox) successBox.hidden = false;
+        } else {
+          if (errorBox) {
+            errorBox.textContent = response.message || 'Die Nachricht konnte nicht gesendet werden.';
+            errorBox.hidden = false;
+          }
+        }
 
-      const result = await response.json();
+        if (submitButton) submitButton.disabled = false;
+      },
+      error: (error) => {
+        if (errorBox) {
+          errorBox.textContent = error?.error?.message || 'Die Nachricht konnte gerade nicht gesendet werden.';
+          errorBox.hidden = false;
+        }
 
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || 'Die Nachricht konnte nicht gesendet werden.');
+        if (submitButton) submitButton.disabled = false;
       }
-
-      form.reset();
-      Object.values(fields).forEach(field => field.classList.remove('invalid'));
-      if (errorBox) errorBox.hidden = true;
-      if (successBox) successBox.hidden = false;
-    } catch (error) {
-      if (errorBox) {
-        errorBox.textContent = error instanceof Error
-          ? error.message
-          : 'Die Nachricht konnte gerade nicht gesendet werden.';
-        errorBox.hidden = false;
-      }
-    } finally {
-      if (submitButton) submitButton.disabled = false;
-    }
+    });
   }
 }
