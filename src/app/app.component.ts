@@ -82,13 +82,13 @@ export class AppComponent implements AfterViewInit {
     this.menuOpen = false;
   }
 
-  sendMessage(event: Event): void {
+  async sendMessage(event: Event): Promise<void> {
     event.preventDefault();
 
     const form = event.target as HTMLFormElement;
     const data = new FormData(form);
-    const name = String(data.get('name') ?? '');
-    const email = String(data.get('email') ?? '');
+    const name = String(data.get('name') ?? '').trim();
+    const email = String(data.get('email') ?? '').trim();
     const subject = String(data.get('subject') ?? '').trim();
     const message = String(data.get('message') ?? '').trim();
 
@@ -103,31 +103,53 @@ export class AppComponent implements AfterViewInit {
 
     const invalidFields: HTMLElement[] = [];
 
-    if (!name.trim()) invalidFields.push(fields.name);
-    if (!email.trim() || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email.trim())) invalidFields.push(fields.email);
+    if (!name) invalidFields.push(fields.name);
+    if (!email || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) invalidFields.push(fields.email);
     if (!subject) invalidFields.push(fields.subject);
     if (!message) invalidFields.push(fields.message);
 
     invalidFields.forEach(field => field.classList.add('invalid'));
 
     const errorBox = form.querySelector('.form-message.error') as HTMLElement | null;
-    if (errorBox) {
-      errorBox.hidden = invalidFields.length === 0;
-    }
+    const successBox = form.querySelector('.form-message.success') as HTMLElement | null;
+    const submitButton = form.querySelector('.form-submit') as HTMLButtonElement | null;
+
+    if (errorBox) errorBox.hidden = invalidFields.length === 0;
+    if (successBox) successBox.hidden = true;
 
     if (invalidFields.length > 0) {
       invalidFields[0].focus();
       return;
     }
 
-    const body = [
-      'Name: ' + name,
-      'Email: ' + email,
-      '',
-      message
-    ].join('\n');
+    if (submitButton) submitButton.disabled = true;
 
-    window.location.href = 'mailto:hello@tanema.de?subject=' +
-      encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    try {
+      const response = await fetch('/api/contact.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Die Nachricht konnte nicht gesendet werden.');
+      }
+
+      form.reset();
+      Object.values(fields).forEach(field => field.classList.remove('invalid'));
+      if (errorBox) errorBox.hidden = true;
+      if (successBox) successBox.hidden = false;
+    } catch (error) {
+      if (errorBox) {
+        errorBox.textContent = error instanceof Error
+          ? error.message
+          : 'Die Nachricht konnte gerade nicht gesendet werden.';
+        errorBox.hidden = false;
+      }
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
   }
 }
