@@ -39,3 +39,4 @@ yarn-error.log*
 
 # Private mail configuration
 /config.php
+vendor/
