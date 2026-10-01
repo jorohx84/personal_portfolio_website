@@ -14,8 +14,18 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-require_once __DIR__ . '/../vendor/autoload.php';
-$config = require __DIR__ . '/config.php';
+try {
+    require_once __DIR__ . '/../vendor/autoload.php';
+    $config = require __DIR__ . '/config.php';
+} catch (Throwable $e) {
+    error_log('Contact form bootstrap error: ' . $e->getMessage());
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Serverfehler beim Laden der Mail-Konfiguration: ' . $e->getMessage()
+    ]);
+    exit;
+}
 
 $input = json_decode(file_get_contents('php://input'), true);
 if (!is_array($input)) {
@@ -137,8 +147,11 @@ try {
     }
 
     echo json_encode(['success' => true, 'message' => 'Vielen Dank für deine Nachricht.']);
-} catch (Exception $e) {
-    error_log('Contact form mail error: ' . $mail->ErrorInfo);
+} catch (Throwable $e) {
+    error_log('Contact form mail error: ' . $e->getMessage());
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Die Nachricht konnte gerade nicht gesendet werden.']);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Mailversand fehlgeschlagen: ' . $e->getMessage()
+    ]);
 }
