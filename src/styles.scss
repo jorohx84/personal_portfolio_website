@@ -1010,6 +1010,13 @@ a {
     line-height: 1.6
 }
 
+.form-message.success {
+    color: #ffb400;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 180, 0, .25);
+    background: rgba(255, 180, 0, .06)
+}
+
 .form-message.error {
     color: #ff8f8f;
     padding: 10px 12px;
@@ -1027,6 +1034,12 @@ a {
 .contact-form textarea.invalid:focus {
     border-color: #d96b6b;
     box-shadow: 0 0 0 1px rgba(217, 107, 107, .18)
+}
+
+.form-submit:disabled {
+    opacity: .55;
+    cursor: wait;
+    transform: none
 }
 
 .form-submit-wrap {
