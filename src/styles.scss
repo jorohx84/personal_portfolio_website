@@ -192,7 +192,7 @@ a {
     align-items: center;
     overflow: hidden;
     isolation: isolate;
-    width: min(1440px, calc(100% - 2 * var(--content-left-gap)));
+    width: min(1680px, calc(100% - 2 * var(--content-left-gap)));
     max-width: none;
     padding: 0;
     margin-left: auto;
