@@ -753,6 +753,20 @@ a {
     color: #777
 }
 
+@media(max-width:1300px) {
+    .hero {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0
+    }
+
+    .hero-copy {
+        width: calc(100% - 80px);
+        margin-left: 40px;
+        margin-right: 40px
+    }
+}
+
 @media(max-width:1050px) {
     :root {
         --sidebar-width: 200px
