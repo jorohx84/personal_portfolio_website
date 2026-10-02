@@ -1,8 +1,11 @@
 <aside class="sidebar" [class.open]="menuOpen">
   <div class="sidebar-top">
-    <button class="logo" (click)="scrollTo('home')" aria-label="Home">
-      <img src="/img/logo.png" alt="JR">
-    </button>
+    <div class="brand-mark">
+      <button class="logo" (click)="scrollTo('home')" aria-label="Home">
+        <img src="/img/logo.png" alt="JR">
+      </button>
+      <span>FULLSTACK DEVELOPER</span>
+    </div>
     <button class="close-menu" (click)="menuOpen=false" aria-label="Close menu">×</button>
   </div>
 
