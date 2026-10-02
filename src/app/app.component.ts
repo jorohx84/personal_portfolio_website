@@ -34,7 +34,8 @@ export class AppComponent implements AfterViewInit {
     { name: 'HTML / SCSS / CSS', level: 94 },
     { name: 'PostgreSQL / Data', level: 88 },
     { name: 'Docker / Linux / Git', level: 82 },
-    { name: 'REST APIs / WebSockets', level: 90 }
+    { name: 'REST APIs / WebSockets', level: 90 },
+    { name: 'AI Engineering', level: 85 }
   ];
 
   experience = [
