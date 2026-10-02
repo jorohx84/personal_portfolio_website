@@ -70,7 +70,21 @@ a {
 .sidebar-top {
     display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: flex-start
+}
+
+.brand-mark {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px
+}
+
+.brand-mark > span {
+    color: #777;
+    font: 600 8px Montserrat, sans-serif;
+    letter-spacing: .14em;
+    white-space: nowrap
 }
 
 .logo {
