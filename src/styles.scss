@@ -654,7 +654,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 22px 0 5px
+    padding: 22px 24px 5px
 }
 
 .portfolio-meta small {
@@ -682,7 +682,8 @@ a {
     color: #888;
     font-size: 13px;
     line-height: 1.7;
-    margin-top: 0
+    margin: 0;
+    padding: 0 24px 24px
 }
 
 .quote-section {
