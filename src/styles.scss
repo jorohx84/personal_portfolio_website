@@ -861,21 +861,45 @@ a {
         display: grid;
         position: fixed;
         z-index: 25;
-        right: 20px;
-        top: 20px;
-        width: 46px;
-        height: 46px;
-        background: #222;
-        box-shadow: 0 5px 20px #0001;
+        right: 19px;
+        top: 19px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border: 1px solid rgba(255, 180, 0, .35);
+        border-radius: 50%;
+        background: rgba(17, 17, 17, .82);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, .28);
         place-content: center;
-        gap: 4px
+        gap: 4px;
+        transition: border-color .2s ease, background .2s ease, transform .2s ease
     }
 
     .mobile-menu span {
         display: block;
-        width: 18px;
+        width: 17px;
         height: 2px;
-        background: #222
+        border-radius: 2px;
+        background: var(--accent);
+        transition: transform .2s ease, opacity .2s ease
+    }
+
+    .mobile-menu:hover {
+        border-color: var(--accent);
+        background: rgba(17, 17, 17, .96)
+    }
+
+    .mobile-menu.open span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg)
+    }
+
+    .mobile-menu.open span:nth-child(2) {
+        opacity: 0
+    }
+
+    .mobile-menu.open span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg)
     }
 
     .mobile-overlay.show {
