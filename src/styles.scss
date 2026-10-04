@@ -804,7 +804,8 @@ a {
     .hero-copy {
         width: calc(100% - 80px);
         margin-left: 40px;
-        margin-right: 40px
+        margin-right: 40px;
+        transform: none
     }
 
     .hero-badge {
