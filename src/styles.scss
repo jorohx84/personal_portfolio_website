@@ -1175,8 +1175,8 @@ a {
     width: 38px;
     height: 38px;
     display: block;
-    opacity: .62;
-    filter: grayscale(1) brightness(1.15);
+    opacity: 1;
+    filter: grayscale(1) brightness(0) invert(.48);
     transition: opacity .25s ease, filter .25s ease, transform .25s ease
 }
 
@@ -1187,7 +1187,7 @@ a {
 
 .tech-item:hover img {
     opacity: 1;
-    filter: grayscale(1) brightness(1.9);
+    filter: grayscale(1) brightness(0) invert(.82);
     transform: scale(1.08)
 }
 
