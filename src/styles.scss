@@ -1126,3 +1126,122 @@ a {
         margin-left: 0
     }
 }
+
+.tech-strip {
+    padding: 42px 0;
+    background: #181818;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line)
+}
+
+.tech-strip-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 28px
+}
+
+.tech-strip-heading > span {
+    font: 600 10px Montserrat;
+    color: #666;
+    letter-spacing: .16em
+}
+
+.tech-strip-heading h2 {
+    margin: 0;
+    font: 600 11px Montserrat;
+    letter-spacing: .13em;
+    color: #777;
+    text-transform: uppercase
+}
+
+.tech-strip-logos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px
+}
+
+.tech-item {
+    min-width: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    color: #666;
+    transition: color .25s ease, transform .25s ease
+}
+
+.tech-item svg {
+    width: 36px;
+    height: 36px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.35;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: color .25s ease, filter .25s ease
+}
+
+.tech-item span {
+    font: 500 8px Montserrat;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    opacity: .55;
+    transition: opacity .25s ease
+}
+
+.tech-item:hover {
+    color: var(--accent);
+    transform: translateY(-3px)
+}
+
+.tech-item:hover span {
+    opacity: 1
+}
+
+.tech-item:hover svg {
+    filter: drop-shadow(0 0 8px rgba(255, 180, 0, .18))
+}
+
+.tech-item:nth-child(1) svg,
+.tech-item:nth-child(2) svg,
+.tech-item:nth-child(3) svg,
+.tech-item:nth-child(4) svg,
+.tech-item:nth-child(5) svg,
+.tech-item:nth-child(6) svg,
+.tech-item:nth-child(7) svg,
+.tech-item:nth-child(8) svg,
+.tech-item:nth-child(9) svg,
+.tech-item:nth-child(10) svg {
+    stroke: currentColor
+}
+
+@media(max-width:800px) {
+    .tech-strip {
+        padding: 34px 0
+    }
+
+    .tech-strip-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 24px
+    }
+
+    .tech-strip-logos {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 24px 10px
+    }
+
+    .tech-item {
+        min-width: 0
+    }
+
+    .tech-item svg {
+        width: 32px;
+        height: 32px
+    }
+}
