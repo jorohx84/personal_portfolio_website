@@ -293,6 +293,17 @@ a {
     box-shadow: 0 10px 25px rgba(255, 180, 0, .25)
 }
 
+.primary-btn .btn-icon {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex: 0 0 auto
+}
+
 .hero-badge {
     position: absolute;
     z-index: 3;
@@ -421,6 +432,23 @@ a {
 .text-link:hover {
     color: var(--accent);
     border-color: var(--accent)
+}
+
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px
+}
+
+.text-link .btn-icon {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex: 0 0 auto
 }
 
 .soft-bg {
