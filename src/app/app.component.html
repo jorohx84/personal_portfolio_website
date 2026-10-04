@@ -38,7 +38,7 @@
   </div>
 </aside>
 
-<button class="mobile-menu" (click)="menuOpen=!menuOpen" aria-label="Open menu"><span></span><span></span><span></span></button>
+<button class="mobile-menu" [class.open]="menuOpen" (click)="menuOpen=!menuOpen" [attr.aria-label]="menuOpen ? 'Close menu' : 'Open menu'"><span></span><span></span><span></span></button>
 <div class="mobile-overlay" [class.show]="menuOpen" (click)="menuOpen=false"></div>
 
 <main class="page">
