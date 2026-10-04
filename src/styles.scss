@@ -938,6 +938,7 @@ a {
     }
 
     .mobile-menu.open span:nth-child(1) {
+        border-radius: 0;
         transform: translateY(6px) rotate(45deg)
     }
 
@@ -946,6 +947,7 @@ a {
     }
 
     .mobile-menu.open span:nth-child(3) {
+        border-radius: 0;
         transform: translateY(-6px) rotate(-45deg)
     }
 
