@@ -878,16 +878,18 @@ a {
 
     .hero {
         min-height: 720px;
-        width: calc(100% - 38px);
-        margin-left: 19px;
-        margin-right: 19px;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
         padding: 100px 0 80px
     }
 
     .hero-copy {
-        width: 100%;
+        width: calc(100% - 38px);
+        margin-left: 19px;
+        margin-right: 19px;
         padding: 0;
-        max-width: 560px
+        max-width: none
     }
 
     .hero h1 {
@@ -899,6 +901,8 @@ a {
     }
 
     .hero-background img {
+        width: 100%;
+        margin-left: 0;
         object-position: 68% 27%
     }
 
