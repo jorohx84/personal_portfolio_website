@@ -1026,12 +1026,30 @@ a {
 
     .footer {
         padding: 24px 0;
+        min-height: 90px;
         display: grid;
-        gap: 13px
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        column-gap: 20px;
+        row-gap: 8px;
+        align-items: center
+    }
+
+    .footer span:first-child {
+        grid-column: 1;
+        grid-row: 1
+    }
+
+    .footer span:nth-child(2) {
+        grid-column: 1;
+        grid-row: 2
     }
 
     .footer button {
-        justify-self: end
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        justify-self: end;
+        align-self: center
     }
 
     .section-heading {
