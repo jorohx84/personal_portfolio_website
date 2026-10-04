@@ -850,8 +850,11 @@ a {
     }
 
     .sidebar .side-nav {
+        top: 50%;
         left: 30px;
-        right: 30px
+        right: 30px;
+        transform: translateY(-50%);
+        padding-top: 110px
     }
 
     .sidebar .sidebar-bottom {
