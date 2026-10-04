@@ -463,9 +463,23 @@ a {
 }
 
 .service-icon {
-    font: 700 21px monospace;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
     color: var(--accent);
-    margin-bottom: 48px
+    margin-bottom: 42px
+}
+
+.service-icon svg {
+    width: 34px;
+    height: 34px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.55;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: block
 }
 
 .service-card h3 {
