@@ -729,6 +729,17 @@ a {
     place-items: center
 }
 
+.portfolio-link-icon {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: block
+}
+
 .portfolio-card>p {
     color: #888;
     font-size: 13px;
