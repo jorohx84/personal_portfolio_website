@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, HostListener, ViewChild, inject }
 import { HttpClient } from '@angular/common/http';
 
 interface Project { title: string; description: string; type: string; number: string; short: string; }
-interface Service { title: string; description: string; number: string; icon: string; }
+interface Service { title: string; description: string; number: string; icon: 'web' | 'api' | 'saas' | 'product' | 'data' | 'realtime'; }
 interface Skill { name: string; level: number; }
 
 @Component({
@@ -20,12 +20,12 @@ export class AppComponent implements AfterViewInit {
   activeSection = 'home';
 
   services: Service[] = [
-    { number: '01', icon: '</>', title: 'Web Application Development', description: 'Modern, responsive business applications built with Angular, TypeScript and a clean component architecture.' },
-    { number: '02', icon: '{}', title: 'Backend & API Development', description: 'Reliable APIs and business logic with Python, Django and Django REST Framework.' },
-    { number: '03', icon: '◎', title: 'SaaS Product Development', description: 'From product idea to production-ready SaaS — including data models, authentication, billing and deployment.' },
-    { number: '04', icon: '↗', title: 'Product Engineering', description: 'Turning complex business processes into simple workflows and interfaces people actually enjoy using.' },
-    { number: '05', icon: 'DB', title: 'Data & Infrastructure', description: 'PostgreSQL, Redis, Docker and Linux infrastructure for maintainable and scalable applications.' },
-    { number: '06', icon: '↯', title: 'Real-time Applications', description: 'Interactive experiences with WebSockets, Django Channels and event-driven application flows.' }
+    { number: '01', icon: 'web', title: 'Web Application Development', description: 'Modern, responsive business applications built with Angular, TypeScript and a clean component architecture.' },
+    { number: '02', icon: 'api', title: 'Backend & API Development', description: 'Reliable APIs and business logic with Python, Django and Django REST Framework.' },
+    { number: '03', icon: 'saas', title: 'SaaS Product Development', description: 'From product idea to production-ready SaaS — including data models, authentication, billing and deployment.' },
+    { number: '04', icon: 'product', title: 'Product Engineering', description: 'Turning complex business processes into simple workflows and interfaces people actually enjoy using.' },
+    { number: '05', icon: 'data', title: 'Data & Infrastructure', description: 'PostgreSQL, Redis, Docker and Linux infrastructure for maintainable and scalable applications.' },
+    { number: '06', icon: 'realtime', title: 'Real-time Applications', description: 'Interactive experiences with WebSockets, Django Channels and event-driven application flows.' }
   ];
 
   skills: Skill[] = [
