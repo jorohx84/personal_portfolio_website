@@ -829,8 +829,24 @@ a {
     .sidebar {
         transform: translateX(-100%);
         transition: .25s;
-        width: 280px;
+        width: 260px;
+        padding-left: 30px;
+        padding-right: 30px;
         box-shadow: 15px 0 40px #0002
+    }
+
+    .sidebar .side-nav {
+        left: 30px;
+        right: 30px
+    }
+
+    .sidebar .sidebar-bottom {
+        left: 30px;
+        right: 30px
+    }
+
+    .sidebar .sidebar-socials {
+        justify-content: center
     }
 
     .sidebar.open {
