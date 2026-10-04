@@ -102,11 +102,6 @@ a {
     object-fit: contain
 }
 
-.close-menu {
-    display: none;
-    font-size: 28px
-}
-
  .side-nav {
     position: absolute;
     top: 42%;
@@ -868,10 +863,6 @@ a {
 
     .sidebar.open {
         transform: translateX(0)
-    }
-
-    .close-menu {
-        display: block
     }
 
     .mobile-menu {
