@@ -116,6 +116,24 @@
     </div>
   </section>
 
+  <section id="skills" class="content-section section-shell" [class.skills-animated]="skillsAnimated" #skillsSection>
+    <div class="section-heading"><span>MY SKILLS</span><h2>MY SKILLS</h2></div>
+    <div class="skills-grid">
+      <div class="skills-copy">
+        <h3>Technology that turns ideas into <span>products.</span></h3>
+        <p>I work across the stack and choose technology according to the problem — not the other way around.</p>
+      </div>
+      <div class="skill-bars">
+        @for (skill of skills; track skill.name) {
+          <div class="skill">
+            <div><strong>{{ skill.name }}</strong><span>{{ skill.level }}%</span></div>
+            <div class="bar"><i [style.width.%]="skill.level"></i></div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
   <section class="tech-strip" aria-label="Technologies I work with">
     <div class="section-shell">
       <div class="tech-strip-heading">
@@ -133,24 +151,6 @@
         <div class="tech-item" title="Git"><img src="https://cdn.simpleicons.org/git" alt="Git"></div>
         <div class="tech-item" title="HTML5"><img src="https://cdn.simpleicons.org/html5" alt="HTML5"></div>
         <div class="tech-item" title="CSS3"><img src="https://cdn.simpleicons.org/css" alt="CSS3"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="content-section section-shell" [class.skills-animated]="skillsAnimated" #skillsSection>
-    <div class="section-heading"><span>MY SKILLS</span><h2>MY SKILLS</h2></div>
-    <div class="skills-grid">
-      <div class="skills-copy">
-        <h3>Technology that turns ideas into <span>products.</span></h3>
-        <p>I work across the stack and choose technology according to the problem — not the other way around.</p>
-      </div>
-      <div class="skill-bars">
-        @for (skill of skills; track skill.name) {
-          <div class="skill">
-            <div><strong>{{ skill.name }}</strong><span>{{ skill.level }}%</span></div>
-            <div class="bar"><i [style.width.%]="skill.level"></i></div>
-          </div>
-        }
       </div>
     </div>
   </section>
